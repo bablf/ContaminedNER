@@ -1,0 +1,10 @@
+[project]
+name = "NER Contamination"
+description = "Code for the paper on entity contamination in NER datasets"
+version = "0.0.1rc1"
+dependencies = [
+    "with_argparse==1.0.2",
+]
+requires-python = ">= 3.10"
+[tool.setuptools]
+packages = ["paper_dataset_contamination"]
