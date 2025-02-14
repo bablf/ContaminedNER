@@ -30,6 +30,11 @@ make -f plots.Makefile contamination.pdf
 ```
 and open the resulting file
 
+For the other plots, run the notebooks/experiments_contamination_analysis.ipynb Notebook.
+```
+
+```
+
 ##### Dataset Contamination HTML Example Generator
 
 To re-create Figure 1 in our paper, run
@@ -37,6 +42,7 @@ To re-create Figure 1 in our paper, run
 make -f plots.Makefile contamination_html
 ```
 and open any file in [scripts/analysis/visuals](scripts/analysis/visuals) in your Browser
+
 
 ### Recreating Experiments
 
