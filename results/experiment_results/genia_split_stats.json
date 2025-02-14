@@ -1,0 +1,244 @@
+{
+  "0": {
+    "0": {
+      "ent_conta_rate": 0.0,
+      "num_entities": 13943
+    },
+    "1": {
+      "ent_conta_rate": 0.0,
+      "num_entities": 13943
+    },
+    "2": {
+      "ent_conta_rate": 0.0,
+      "num_entities": 13943
+    },
+    "3": {
+      "ent_conta_rate": 0.0,
+      "num_entities": 13943
+    },
+    "4": {
+      "ent_conta_rate": 0.0,
+      "num_entities": 13943
+    }
+  },
+  "10": {
+    "0": {
+      "ent_conta_rate": 8.53,
+      "num_entities": 15348
+    },
+    "1": {
+      "ent_conta_rate": 8.69,
+      "num_entities": 15248
+    },
+    "2": {
+      "ent_conta_rate": 8.88,
+      "num_entities": 15365
+    },
+    "3": {
+      "ent_conta_rate": 8.46,
+      "num_entities": 15318
+    },
+    "4": {
+      "ent_conta_rate": 8.68,
+      "num_entities": 15360
+    }
+  },
+  "20": {
+    "0": {
+      "ent_conta_rate": 15.59,
+      "num_entities": 16707
+    },
+    "1": {
+      "ent_conta_rate": 15.96,
+      "num_entities": 16722
+    },
+    "2": {
+      "ent_conta_rate": 15.95,
+      "num_entities": 16547
+    },
+    "3": {
+      "ent_conta_rate": 15.82,
+      "num_entities": 16807
+    },
+    "4": {
+      "ent_conta_rate": 15.76,
+      "num_entities": 16832
+    }
+  },
+  "30": {
+    "0": {
+      "ent_conta_rate": 22.04,
+      "num_entities": 18245
+    },
+    "1": {
+      "ent_conta_rate": 22.02,
+      "num_entities": 18002
+    },
+    "2": {
+      "ent_conta_rate": 21.78,
+      "num_entities": 18126
+    },
+    "3": {
+      "ent_conta_rate": 22.08,
+      "num_entities": 18254
+    },
+    "4": {
+      "ent_conta_rate": 21.8,
+      "num_entities": 18242
+    }
+  },
+  "40": {
+    "0": {
+      "ent_conta_rate": 27.07,
+      "num_entities": 19663
+    },
+    "1": {
+      "ent_conta_rate": 27.7,
+      "num_entities": 19513
+    },
+    "2": {
+      "ent_conta_rate": 27.16,
+      "num_entities": 19449
+    },
+    "3": {
+      "ent_conta_rate": 26.98,
+      "num_entities": 19615
+    },
+    "4": {
+      "ent_conta_rate": 27.32,
+      "num_entities": 19646
+    }
+  },
+  "50": {
+    "0": {
+      "ent_conta_rate": 31.68,
+      "num_entities": 21075
+    },
+    "1": {
+      "ent_conta_rate": 32.09,
+      "num_entities": 20803
+    },
+    "2": {
+      "ent_conta_rate": 32.02,
+      "num_entities": 20779
+    },
+    "3": {
+      "ent_conta_rate": 31.41,
+      "num_entities": 21046
+    },
+    "4": {
+      "ent_conta_rate": 31.69,
+      "num_entities": 21149
+    }
+  },
+  "60": {
+    "0": {
+      "ent_conta_rate": 35.35,
+      "num_entities": 22350
+    },
+    "1": {
+      "ent_conta_rate": 35.96,
+      "num_entities": 22119
+    },
+    "2": {
+      "ent_conta_rate": 35.9,
+      "num_entities": 22156
+    },
+    "3": {
+      "ent_conta_rate": 35.57,
+      "num_entities": 22427
+    },
+    "4": {
+      "ent_conta_rate": 35.56,
+      "num_entities": 22559
+    }
+  },
+  "70": {
+    "0": {
+      "ent_conta_rate": 39.0,
+      "num_entities": 23777
+    },
+    "1": {
+      "ent_conta_rate": 39.21,
+      "num_entities": 23630
+    },
+    "2": {
+      "ent_conta_rate": 39.3,
+      "num_entities": 23622
+    },
+    "3": {
+      "ent_conta_rate": 38.77,
+      "num_entities": 23743
+    },
+    "4": {
+      "ent_conta_rate": 39.16,
+      "num_entities": 23831
+    }
+  },
+  "80": {
+    "0": {
+      "ent_conta_rate": 42.28,
+      "num_entities": 25289
+    },
+    "1": {
+      "ent_conta_rate": 42.06,
+      "num_entities": 25114
+    },
+    "2": {
+      "ent_conta_rate": 42.12,
+      "num_entities": 24950
+    },
+    "3": {
+      "ent_conta_rate": 41.83,
+      "num_entities": 25105
+    },
+    "4": {
+      "ent_conta_rate": 42.14,
+      "num_entities": 25100
+    }
+  },
+  "90": {
+    "0": {
+      "ent_conta_rate": 45.01,
+      "num_entities": 26428
+    },
+    "1": {
+      "ent_conta_rate": 44.75,
+      "num_entities": 26594
+    },
+    "2": {
+      "ent_conta_rate": 45.23,
+      "num_entities": 26429
+    },
+    "3": {
+      "ent_conta_rate": 44.92,
+      "num_entities": 26472
+    },
+    "4": {
+      "ent_conta_rate": 45.16,
+      "num_entities": 26358
+    }
+  },
+  "100": {
+    "0": {
+      "ent_conta_rate": 47.57,
+      "num_entities": 27888
+    },
+    "1": {
+      "ent_conta_rate": 47.62,
+      "num_entities": 27888
+    },
+    "2": {
+      "ent_conta_rate": 47.67,
+      "num_entities": 27912
+    },
+    "3": {
+      "ent_conta_rate": 47.33,
+      "num_entities": 27947
+    },
+    "4": {
+      "ent_conta_rate": 47.66,
+      "num_entities": 27950
+    }
+  }
+}

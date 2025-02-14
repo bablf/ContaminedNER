@@ -1,0 +1,96 @@
+{
+    "ace05": {
+        "normal": {
+            "Eval_Ent_Precision": 89.8966,
+            "Eval_Ent_Recall": 90.5040,
+            "Eval_Ent_F1": 90.1993,
+            "Eval_Time": 55.8548,
+            "Eval_Examples": 2050,
+            "Eval_Examples_Per_Second": 36.7023
+        },
+        "seen": {
+            "Eval_Ent_Precision": 76.8547,
+            "Eval_Ent_Recall": 92.8963,
+            "Eval_Ent_F1": 84.1175,
+            "Eval_Time": 55.2114,
+            "Eval_Examples": 2050,
+            "Eval_Examples_Per_Second": 37.1300
+        },
+        "unseen": {
+            "Eval_Ent_Precision": 13.0419,
+            "Eval_Ent_Recall": 78.5792,
+            "Eval_Ent_F1": 22.3709,
+            "Eval_Time": 55.0915,
+            "Eval_Examples": 2050,
+            "Eval_Examples_Per_Second": 37.2108
+        }
+    },
+    "conll04": {
+        "normal": {
+            "Eval_Ent_Precision": 87.4545,
+            "Eval_Ent_Recall": 89.1566,
+            "Eval_Ent_F1": 88.2974
+        },
+        "seen": {
+            "Eval_Ent_Precision": 46.4545,
+            "Eval_Ent_Recall": 95.5140,
+            "Eval_Ent_F1": 62.5076
+        },
+        "unseen": {
+            "Eval_Ent_Precision": 41.0000,
+            "Eval_Ent_Recall": 82.9044,
+            "Eval_Ent_F1": 54.8662
+        }
+    },
+    "scierc": {
+        "normal": {
+            "Eval_Ent_Precision": 66.9948,
+            "Eval_Ent_Recall": 68.7463,
+            "Eval_Ent_F1": 67.8592
+        },
+        "seen": {
+            "Eval_Ent_Precision": 18.1818,
+            "Eval_Ent_Recall": 80.3069,
+            "Eval_Ent_F1": 29.6506
+        },
+        "unseen": {
+            "Eval_Ent_Precision": 48.8130,
+            "Eval_Ent_Recall": 65.2477,
+            "Eval_Ent_F1": 55.8463
+        }
+    },
+    "genia": {
+        "normal": {
+            "Eval_Ent_Precision": 70.5687,
+            "Eval_Ent_Recall": 47.3655,
+            "Eval_Ent_F1": 56.6845
+        },
+        "seen": {
+            "Eval_Ent_Precision": 45.3814,
+            "Eval_Ent_Recall": 52.7402,
+            "Eval_Ent_F1": 48.7849
+        },
+        "unseen": {
+            "Eval_Ent_Precision": 26.1581,
+            "Eval_Ent_Recall": 40.4895,
+            "Eval_Ent_F1": 31.7829
+        }
+    },
+    "nyt": {
+        "normal": {
+            "Eval_Ent_Precision": 94.3527,
+            "Eval_Ent_Recall": 94.4224,
+            "Eval_Ent_F1": 94.3875,
+        },
+        "seen": {
+            "Eval_Ent_Precision": 89.9050,
+            "Eval_Ent_Recall": 96.1987,
+            "Eval_Ent_F1": 92.9454
+        },
+        "unseen":{
+            "Eval_Ent_Precision": 4.4477,
+            "Eval_Ent_Recall": 68.6610,
+            "Eval_Ent_F1": 8.3543
+        }
+    }
+}
