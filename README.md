@@ -31,9 +31,6 @@ make -f plots.Makefile contamination.pdf
 and open the resulting file
 
 For the other plots, run the notebooks/experiments_contamination_analysis.ipynb Notebook.
-```
-
-```
 
 ##### Dataset Contamination HTML Example Generator
 
