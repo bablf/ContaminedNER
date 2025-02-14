@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+
+from paper_dataset_contamination.experiment_watcher import run_experiment
+
+run_experiment()
