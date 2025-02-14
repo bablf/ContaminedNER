@@ -80,7 +80,7 @@
         "normal": {
             "Eval_Ent_Precision": 94.3527,
             "Eval_Ent_Recall": 94.4224,
-            "Eval_Ent_F1": 94.3875,
+            "Eval_Ent_F1": 94.3875
         },
         "seen": {
             "Eval_Ent_Precision": 89.9050,
