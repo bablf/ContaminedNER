@@ -13,6 +13,10 @@ This repository is structured as follows:
 
 ├─ [3. Creating Clean Splits using Minimum Cut](#minimum-cut)
 
+├─ [4. Create ACE05 Clean and Contaminated Test set.](#create-clean-and-contaminated-test-split-for-any-dataset)
+
+
+
 ### Setup
 
 ```shell
@@ -31,9 +35,6 @@ make -f plots.Makefile contamination.pdf
 and open the resulting file
 
 For the other plots, run the notebooks/experiments_contamination_analysis.ipynb Notebook.
-```
-
-```
 
 ##### Dataset Contamination HTML Example Generator
 
@@ -97,4 +98,28 @@ which will create 80/10/10 minimum cut splits for all datasets. **To re-create t
 
 ```shell
 make -f plots.Makefile mincut_contamination.pdf
+```
+
+### Create Clean and Contaminated Test Split for any dataset
+
+Since we are not allowed to share ACE05, we can only share a script to recreate the clean
+and contaminated test splits for all/any dataset.
+
+0. (Optional) Put the original ACE05 dataset into `datasets/ace05/*/English`
+1. Run `bash scripts/datasets/load_datasets.sh`. This will load and preprocess all datasets.
+2. Run `make -f plots.Makefile separated_test_set_files`.
+The `{dataset}_{seen,unseen}_test.json` for each dataset can be found in the datasets/{dataset} folder
+
+If you want to create the clean and contaminated test split for any dataset, you need to convert it into the required format,
+where *start* and *end* are the token indices.
+```json
+[ {"tokens": ["Peripheral", "neuropathy", "associated", "with", "capecitabine", "."],
+"entities": [{"type": "Adverse-Effect", "start": 0, "end": 2}, {"type": "Drug", "start": 4, "end": 5}],
+    ...
+]
+```
+
+You can create the clean and contaminated test splits with
+```shell
+make -f plots.Makefile separated_test_set_files DATASETS=datasets/YOURDATASET/YOURDATASET_train.json,datasets/YOURDATASET/YOUR_DATASET_test.json,YOURDATASET
 ```
