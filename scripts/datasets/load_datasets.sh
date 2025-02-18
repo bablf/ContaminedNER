@@ -12,7 +12,8 @@ function load_conll03 () {
   unzip -oq "$DATASET_DIR/conll03.zip" -d "$DATASET_DIR"
   mv "$DATASET_DIR/conll03_ner/"* "$DATASET_DIR/conll03"
   rm -rv "$DATASET_DIR/conll03_ner"
-  python3 "$WORK_DIR/scripts/datasets/load_conll03.py"
+  python3 "$WORK_DIR/related_work/ITER/scripts/datasets/load_conll03.py"
+  python3 "$WORK_DIR/related_work/ITER/scripts/datasets/load_conll03_doclvl.py"
   rm -fv $DATASET_DIR/conll03/*.txt
   rm -v "$DATASET_DIR/conll03.zip"
 }
@@ -27,13 +28,12 @@ function load_conll04 () {
 function load_ade () {
   mkdir -v "$DATASET_DIR/ade"
   wget -r -nH --cut-dirs=100 --reject "index.html*" --no-parent http://lavis.cs.hs-rm.de/storage/spert/public/datasets/ade/ -P "$DATASET_DIR/ade"
-  python3 "$WORK_DIR/scripts/datasets/load_ade.py"
 }
 
 # genia
 function load_genia () {
   mkdir -v "$DATASET_DIR/genia"
-  python3 "$WORK_DIR/scripts/datasets/load_genia.py"
+  python3 "$WORK_DIR/related_work/ITER/scripts/datasets/load_genia.py"
 }
 
 # nyt
@@ -43,7 +43,7 @@ function load_nyt () {
   for type in "${types[@]}"; do
     wget "https://raw.githubusercontent.com/yubowen-ph/JointER/master/dataset/NYT-multi/data/$type.json" -P "$DATASET_DIR/nyt"
   done
-  python3 "$WORK_DIR/scripts/datasets/load_nyt.py"
+  python3 "$WORK_DIR/related_work/ITER/scripts/datasets/load_nyt.py"
 }
 
 # scierc
@@ -68,14 +68,14 @@ function preprocess_ace05 () {
   popd
   pushd "$DATASET_DIR/ace05/dygie/preprocessing/ace2005"
   for f in English/*.zip; do test -d "English/$(basename ${f%.zip})" || unzip "$f" -d "English/$(basename ${f%.zip})" || echo ""; done
-  bash "$WORK_DIR/scripts/datasets/load_ace05.sh"
+  bash "$WORK_DIR/related_work/ITER/scripts/datasets/load_ace05.sh"
   sed -i 's/print fn/print(fn)/' "$DATASET_DIR/ace05/dygie/preprocessing/ace2005/ace2json.py"
   mkdir -p "../../data/ace05/json"
   python3 ace2json.py
   popd
   python3 "$DATASET_DIR/ace05/ace05_to_json.py" "$DATASET_DIR/ace05/dygie/data/ace05/json/"
   mv "$DATASET_DIR/ace05/dygie/data/ace05/json/ace05_*.json" "$DATASET_DIR/ace05"
-  python3 "$WORK_DIR/scripts/datasets/load_ace05.py" "--path" "$DATASET_DIR/ace05" "--update_truecase"
+  python3 "$WORK_DIR/related_work/ITER/scripts/datasets/load_ace05.py" "--path" "$DATASET_DIR/ace05" "--update_truecase"
 }
 
 function load_ace05 () {
