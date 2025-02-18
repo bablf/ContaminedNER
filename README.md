@@ -1,7 +1,7 @@
-# Entity Contamination inflates Named Entity Recognition Performance: Quantifying the Memorization-Generalization Gap in NER Models
+# Random Splitting Negatively Impacts NER Evaluation: Quantifying and Eliminating the Overestimation of NER Performance
 
-This repository contains the code for the OpenReview submission "*Entity Contamination inflates Named Entity Recognition
-Performance: Quantifying the Memorization-Generalization Gap in NER Models*"
+This repository contains the code for the OpenReview submission "*Random Splitting Negatively Impacts NER Evaluation:
+Quantifying and Eliminating the Overestimation of NER Performance*"
 
 ### Repository Structure
 
