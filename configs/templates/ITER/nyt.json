@@ -8,7 +8,8 @@
       "train": "nyt_train.json",
       "test": "nyt_test.json",
       "eval": "nyt_dev.json",
-      "types": "nyt_types.json"
+      "types": "nyt_types.json",
+      "contaminated": "nyt_contaminated.json"
     },
     "data_dir": "nyt"
   },

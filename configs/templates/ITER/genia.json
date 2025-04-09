@@ -8,7 +8,8 @@
       "train": "genia_pure_train.json", 
       "test": "genia_test.json",
       "eval": "genia_test.json",
-      "types": "genia_types.json"
+      "types": "genia_types.json",
+      "contaminated": "genia_contaminated.json"
     },
     "data_dir": "genia"
   },

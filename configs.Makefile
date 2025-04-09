@@ -22,16 +22,16 @@ asp_configs: $(ASP_CONFIGS) $(ASP_TEST_CONFIGS);
 
 diffusion_configs: $(DIFF_CONFIGS) $(DIFF_TEST_CONFIGS);
 
-$(ITER_CONFIGS):
+$(ITER_CONFIGS): scripts/configs/generate_iter_configs.py
 	python3 scripts/configs/generate_iter_configs.py --base $(CONFIGS_DIR)/templates/ITER/$(lastword $(subst /, ,$(subst /dataset_contamination,,$(dir $@)))).json --output_dir $(CONFIGS_DIR)/$(lastword $(subst /, ,$(subst /dataset_contamination,,$(dir $@)))) --n_splits 5
 
-$(ITER_TEST_CONFIGS):
+$(ITER_TEST_CONFIGS): scripts/configs/generate_iter_test_configs.py
 	python3 scripts/configs/generate_iter_test_configs.py --base $(CONFIGS_DIR)/templates/ITER/$(lastword $(subst /, ,$(dir $@))).json --output_dir $(CONFIGS_DIR)/$(lastword $(subst /, ,$(dir $@)))
 
-%_diffusion.conf: %_iter.json
+%_diffusion.conf: %_iter.json scripts/configs/generate_diffusion_ner_configs.py
 	python3 scripts/configs/generate_diffusion_ner_configs.py --template $(CONFIGS_DIR)/templates/DiffusionNER/$(lastword $(subst /, ,$(subst /dataset_contamination,,$(dir $@)))).conf --data_dir datasets --config $<
 
-%_asp.conf: %_iter.json
+%_asp.conf: %_iter.json scripts/configs/generate_asp_configs.py
 	python3 scripts/configs/generate_asp_configs.py --template $(CONFIGS_DIR)/templates/ASP/$(lastword $(subst /, ,$(subst /dataset_contamination,,$(dir $@)))).conf --data_dir datasets --config $<
 
 clean:

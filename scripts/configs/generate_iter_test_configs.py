@@ -23,6 +23,7 @@ def generate_iter_configs(
             "normal": f"{dataset_name}_test.json",
             "seen": f"{dataset_name}_seen_test.json",
             "unseen": f"{dataset_name}_unseen_test.json",
+            "contaminated": f"{dataset_name}_contaminated.json",
         }
     }
     for key, value in split_files.items():

@@ -35,6 +35,7 @@ def generate_iter_configs(
                     "seen": f"{split_dataset_name}_conta{contamination_level}_split{split}_seen_test.json",
                     "unseen": f"{split_dataset_name}_conta{contamination_level}_split{split}_unseen_test.json",
                 },
+                "contaminated": f"{split_dataset_name}_conta{contamination_level}_split{split}_contaminated.json",
             }
             for key, value in split_files.items():
                 split_config["dataset"]["splits"][key] = value

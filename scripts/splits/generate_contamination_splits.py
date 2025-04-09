@@ -56,6 +56,12 @@ def generate_contamination_splits(
                         split_unique_entities,
                     )
                 )
+                contaminated_entities = list()
+                for doc in contaminated:
+                    contaminated_entities.extend([
+                        dict(entity, tokens=doc["tokens"]) for entity in doc["entities"]
+                    ])
+
                 assert len(clean) == len(dataset.test_docs)
 
                 with dataset.train_split.with_stem(
@@ -67,6 +73,11 @@ def generate_contamination_splits(
                     contamination_filename_stem + "_unseen_test"
                 ).open("w") as f:
                     json.dump(clean, f)
+
+                with dataset.train_split.with_stem(
+                    contamination_filename_stem + "_contaminated"
+                ).open("w") as f:
+                    json.dump(contaminated_entities, f)
 
 
 generate_contamination_splits()

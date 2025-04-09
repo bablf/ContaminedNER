@@ -8,7 +8,8 @@
       "train": "ace05_train.json",
       "test": "ace05_test.json",
       "eval": "ace05_dev.json",
-      "types": "ace05_types.json"
+      "types": "ace05_types.json",
+      "contaminated": "ace05_contaminated.json"
     },
     "data_dir": "ace05"
   },

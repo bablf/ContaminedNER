@@ -18,11 +18,12 @@ DATASETS += datasets/scierc/scierc_train.json,datasets/scierc/scierc_test.json,d
 
 DATASET_FILES := $(filter-out $(DATASET_NAMES),$(subst $(COMMA), ,$(DATASETS)))
 DATASET_TEST_FILES := $(filter %_test.json,$(DATASET_FILES))
+DATASET_CONTAMINATION_FILES := $(subst _test.json,_contaminated.json,$(filter-out datasets/ade/%.json,$(DATASET_TEST_FILES)))
 SEPARATED_DATASET_FILES := $(subst _test,_seen_test,$(DATASET_TEST_FILES)) $(subst _test,_unseen_test,$(DATASET_TEST_FILES))
 
 MINCUT_DATASETS := $(subst .json,_mincut.json,$(DATASETS))
 MINCUT_FILES := $(subst .json,_mincut.json,$(DATASET_FILES))
-MINCUT_DIR := 
+MINCUT_DIR :=
 
 mincut_contamination.pdf: $(MINCUT_FILES) $(DATASET_FILES)
 	python3 scripts/analysis/plot_dataset_contamination.py --dataset $(DATASETS) --mincut_dataset $(MINCUT_DATASETS) --mincut_cmap "tab20c:4:8" --test_cmap "tab20b:4:16" --train_cmap "tab20c:4:0" --with_label --distance_between_bars 1 --bar_width 0.7 --scale 1 --y_scale 1 --filename mincut_contamination.pdf
@@ -38,6 +39,10 @@ contamination_html:
 
 contamination_splits: $(DATASET_FILES)
 	python3 scripts/splits/generate_contamination_splits.py --n_splits 5 --n_contaminated 10 --dataset $(DATASETS)
+
+contaminated_entity_files: $(DATASET_CONTAMINATION_FILES)
+$(DATASET_CONTAMINATION_FILES): $(DATASET_FILES)
+	@python3 scripts/splits/generate_contamination_entities.py --dataset $(filter %$(word 2,$(subst /, ,$@)),$(shell echo $(DATASETS) | tr A-Z a-z))
 
 $(SEPARATED_DATASET_FILES): $(DATASET_TEST_FILES)
 	@python3 scripts/splits/separate_clean_contaminated_test_set.py --dataset $(filter %$(word 2,$(subst /, ,$@)),$(shell echo $(DATASETS) | tr A-Z a-z))
@@ -66,6 +71,6 @@ $(DATASET_FILES):
 	@echo need to make $@
 
 clean:
-	rm -v datasets/*/*_mincut.json
-	rm -v datasets/*/*seen*.json
-	rm -v *.pdf
+	find datasets -name "*_mincut.json" -print -delete
+	find datasets -name "*seen*.json" -print -delete
+	rm -fv *.pdf

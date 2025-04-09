@@ -8,7 +8,8 @@
       "train": "conll04_train_dev.json",
       "test": "conll04_test.json",
       "eval": "conll04_dev.json",
-      "types": "conll04_types.json"
+      "types": "conll04_types.json",
+      "contaminated": "conll04_contaminated.json"
     },
     "data_dir": "conll04"
   },

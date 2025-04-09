@@ -22,6 +22,7 @@ class InputDataset:
     test_split: Path
     name: str
     dev_split: Optional[Path] = None
+    position_aware: bool = True
 
     train_docs: DOCS_T = dataclasses.field(default_factory=list)
     train_entities: set[ENTITY_T] = dataclasses.field(default_factory=set)
@@ -74,19 +75,28 @@ class InputDataset:
             + self.dev_entities_per_doc
         )
 
-    @staticmethod
     def load_split(
+        self,
         split_file: Path,
     ) -> tuple[set[ENTITY_T], list[ENTITY_T], list[dict]]:
         split_entities = set()
         split_entities_per_doc = list()
         with split_file.open() as f:
             split_json = json.load(f)
+
+        def parse_entity(tokens: list[str], ent: dict):
+            entity_repr = (
+                "_".join(tokens[ent["start"]: ent["end"]]),
+                ent["type"]
+            )
+            if self.position_aware:
+                entity_repr = entity_repr + (ent["start"], ent["end"])
+            return entity_repr
+
         for elem in tqdm(split_json, leave=False, desc=split_file.name):
             elem_text = elem["tokens"]
             elem_entities = {
-#                ("_".join([str(entity["start"]), str(entity["end"])]), entity["type"])
-                ("_".join(elem_text[entity["start"]: entity["end"]]), entity["type"])
+                parse_entity(elem_text, entity)
                 for entity in elem["entities"]
             }
             split_entities.update(elem_entities)
@@ -251,7 +261,7 @@ class InputDataset:
         cls,
         split_docs: DOCS_T,
         opposing_unique_entities: ENTITIES_T,
-    ) -> tuple[list[DOCS_T], list[DOCS_T]]:
+    ) -> tuple[DOCS_T, DOCS_T]:
         """
         For a split of documents, return two sets of all documents, but with filtered entities:
         - Once with all clean entities
@@ -365,7 +375,7 @@ def outer(t_in: T_IN, t_out: T_OUT, enabled=True):
 T_DS = TypeVar("T_DS", bound=InputDataset)
 
 
-def parse_dataset_subclass(subclass: type[T_DS], sep=":", as_list=True):
+def parse_dataset_subclass(subclass: type[T_DS], sep=":", as_list=True, position_aware=True):
     @outer(str, subclass, as_list)
     def _parse_dataset(inp: str) -> subclass:
         if sep in inp:
@@ -377,8 +387,8 @@ def parse_dataset_subclass(subclass: type[T_DS], sep=":", as_list=True):
         if len(args) < 3:
             raise ValueError(args)
         if len(args) > 3:
-            return subclass(Path(args[0]), Path(args[1]), args[3], Path(args[2]))
-        return subclass(Path(args[0]), Path(args[1]), args[2])
+            return subclass(Path(args[0]), Path(args[1]), args[3], Path(args[2]), position_aware=position_aware)
+        return subclass(Path(args[0]), Path(args[1]), args[2], position_aware=position_aware)
 
     return _parse_dataset
 

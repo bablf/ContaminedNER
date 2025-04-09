@@ -8,7 +8,8 @@
       "train": "scierc_pure_train.json",
       "test": "scierc_test.json",
       "eval": "scierc_dev.json",
-      "types": "scierc_types.json"
+      "types": "scierc_types.json",
+      "contaminated": "scierc_contaminated.json"
     },
     "data_dir": "scierc"
   },
