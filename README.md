@@ -34,7 +34,7 @@ To visualize the contamination of any dataset, run
 ```shell
 make -f plots.Makefile contamination.pdf
 ```
-and open the resulting file
+and open the resulting file. You should have latex installed to run this successfully (see [matplotib requirements](https://matplotlib.org/stable/api/texmanager_api.html)).
 
 For the other plots, run the notebooks/experiments_contamination_analysis.ipynb Notebook.
 
