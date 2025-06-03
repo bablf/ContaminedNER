@@ -21,9 +21,11 @@ This repository is structured as follows:
 
 ```shell
 git clone xyz && cd xyz
+python3 -m venv venv     # python3.12 works   
+source venv/bin/activate
 pip install .
+bash ./scripts/datasets/load_datasets.sh    # loads all datasets except ace05
 ```
-
 ### Dataset Contamination Visualizations
 
 ##### Plots
