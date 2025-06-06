@@ -2,6 +2,11 @@
 __pycache__
 datasets
 models
+build
+paper_dataset_contamination.egg-info/
 cfg/paper_dataset_contamination/*.json
 cfg/paper_dataset_contamination/*.conf
+configs/
+!configs/templates*
+venv
 *.pdf
