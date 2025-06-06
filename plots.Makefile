@@ -25,11 +25,20 @@ MINCUT_DATASETS := $(subst .json,_mincut.json,$(DATASETS))
 MINCUT_FILES := $(subst .json,_mincut.json,$(DATASET_FILES))
 MINCUT_DIR :=
 
+CONTAMINATION_LEVELS := 0 10 80 90 100
+SPLIT_DATASET := scierc
+SPLIT_DATASET_NAME := SciERC
+SPLIT_FILES := $(foreach CONTA,$(CONTAMINATION_LEVELS),datasets/$(SPLIT_DATASET)/$(SPLIT_DATASET)_conta$(CONTA)_split0_train.json datasets/$(SPLIT_DATASET)/$(SPLIT_DATASET)_test.json)
+SPLIT_DATASETS := $(foreach CONTA,$(CONTAMINATION_LEVELS),datasets/$(SPLIT_DATASET)/$(SPLIT_DATASET)_conta$(CONTA)_split0_train.json$(COMMA)datasets/$(SPLIT_DATASET)/$(SPLIT_DATASET)_test.json$(COMMA)$(SPLIT_DATASET_NAME))
+
 mincut_contamination.pdf: $(MINCUT_FILES) $(DATASET_FILES)
 	python3 scripts/analysis/plot_dataset_contamination.py --dataset $(DATASETS) --mincut_dataset $(MINCUT_DATASETS) --mincut_cmap "tab20c:4:8" --test_cmap "tab20b:4:16" --train_cmap "tab20c:4:0" --with_label --distance_between_bars 1 --bar_width 0.7 --scale 1 --y_scale 1 --filename mincut_contamination.pdf
 
 contamination.pdf: $(DATASET_FILES)
 	python3 scripts/analysis/plot_dataset_contamination.py --dataset $(DATASETS) --test_cmap "tab20b:4:16" --train_cmap "tab20c:4:0" --with_label --distance_between_bars 1 --bar_width 0.7 --scale 1 --y_scale 1
+
+split_contamination.pdf: scripts/analysis/plot_split_contamination.py $(SPLIT_FILES)
+	python3 scripts/analysis/plot_split_contamination.py --dataset $(SPLIT_DATASETS) --test_cmap "tab20c:4:4" --train_cmap "tab20c:4:4" --with_label --distance_between_bars 1 --bar_width 0.7 --scale 1 --y_scale 1 --filename $@
 
 default_ratios:
 	python3 scripts/analysis/split_ratios.py --dataset $(DATASETS)
