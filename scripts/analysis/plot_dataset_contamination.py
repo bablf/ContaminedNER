@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any, Optional, TypeVar
+from typing import Any, Optional, TypeVar, Union
 
 import matplotlib as mpl
 import matplotlib.patches as mpatches
