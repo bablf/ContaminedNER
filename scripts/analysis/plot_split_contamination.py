@@ -77,7 +77,7 @@ def plot_contamination_level(
         width = 7.4 * (1 - train_contamination)
 
         axis.annotate(
-            r"$\textbf{clean}$", (x, col_x + bar_width / 2), (x, col_x + 0.5 * bar_width + arrow_length),
+            r"$\textbf{clean}$", (x, col_x + bar_width * 0.5), (x, col_x + 0.65 * bar_width + arrow_length),
             size="large", color="black", va="center", ha="center",
             arrowprops=dict(
                 arrowstyle=f"-[,widthB={width},angleB=0,lengthB={tick_length}", color="black"
@@ -102,7 +102,7 @@ def plot_contamination_level(
         width = 7.4 * (test_contamination)
 
         axis.annotate(
-            r"$\textbf{contaminated}$", (x, col_x + bar_width / 2), (x, col_x + 0.5 * bar_width + arrow_length),
+            r"$\textbf{contaminated}$", (x, col_x + bar_width * 0.5), (x, col_x + 0.65 * bar_width + arrow_length),
             size="large", color="black", va="center", ha="center",
             arrowprops=dict(
                 arrowstyle=f"-[,widthB={width},angleB=0,lengthB={tick_length}", color="black"
@@ -224,11 +224,11 @@ def plot_dataset_contamination(
     mincut_datasets.sort(key=lambda x: x.name.lower(), reverse=True)
 
     fig: Figure
-    fig, axis = plt.subplots(1, 1, layout="constrained", figsize=(5.4, 4.8))
+    fig, axis = plt.subplots(1, 1, layout="constrained", figsize=(5.4, 3.8))
 
     x_offsets = np.arange(0, len(datasets) * distance_between_bars, distance_between_bars)
-    x_offsets[-2:] += 0.8 * distance_between_bars
-    x_offsets[-3:] += 0.8 * distance_between_bars
+    x_offsets[-2:] += 0.9 * distance_between_bars
+    x_offsets[-3:] += 0.9 * distance_between_bars
     x_offsets *= y_scale
     using_mincut = len(mincut_datasets) > 0
     bar_scale = 2 if using_mincut else 1
