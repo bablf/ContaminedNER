@@ -325,6 +325,7 @@ def plot_dataset_contamination(
         ncol=2,
         bbox_to_anchor=(0.5, -0.23),
         frameon=False,
+        fontsize=12,
     )
     leg2 = axis.legend(
         handles=[
@@ -339,6 +340,7 @@ def plot_dataset_contamination(
         ncol=2,
         bbox_to_anchor=(0.5, -0.23),
         frameon=False,
+        fontsize=12,
     )
     # leg2.remove()
     leg1._legend_box.width = 340
