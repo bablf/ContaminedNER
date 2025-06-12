@@ -85,10 +85,7 @@ class InputDataset:
             split_json = json.load(f)
 
         def parse_entity(tokens: list[str], ent: dict):
-            entity_repr = (
-                "_".join(tokens[ent["start"]: ent["end"]]),
-                ent["type"]
-            )
+            entity_repr = ("_".join(tokens[ent["start"] : ent["end"]]), ent["type"])
             if self.position_aware:
                 entity_repr = entity_repr + (ent["start"], ent["end"])
             return entity_repr
@@ -96,8 +93,7 @@ class InputDataset:
         for elem in tqdm(split_json, leave=False, desc=split_file.name):
             elem_text = elem["tokens"]
             elem_entities = {
-                parse_entity(elem_text, entity)
-                for entity in elem["entities"]
+                parse_entity(elem_text, entity) for entity in elem["entities"]
             }
             split_entities.update(elem_entities)
             split_entities_per_doc.append(elem_entities)
@@ -154,14 +150,22 @@ class InputDataset:
         return split_entities
 
     @staticmethod
-    def _doc_entities(doc: dict, position_aware: bool = False, container_type: type[list | set] = set) -> ENTITIES_T | list[ENTITY_T]:
+    def _doc_entities(
+        doc: dict, position_aware: bool = False, container_type: type[list | set] = set
+    ) -> ENTITIES_T | list[ENTITY_T]:
         entities = container_type()
         words = doc["tokens"]
         for entity in doc["entities"]:
             if not position_aware:
-                name, typ = "_".join(words[entity["start"]:entity["end"]]), entity["type"]
+                name, typ = (
+                    "_".join(words[entity["start"] : entity["end"]]),
+                    entity["type"],
+                )
             else:
-                name, typ = "_".join(map(str, [entity["start"], entity["end"]])), entity["type"]
+                name, typ = (
+                    "_".join(map(str, [entity["start"], entity["end"]])),
+                    entity["type"],
+                )
             entities += container_type([(name, typ)])
         return entities
 
@@ -201,6 +205,7 @@ class InputDataset:
                 whole_doc_contaminated=whole_doc_contaminated,
                 normalize=normalize,
             )
+
     def get_split(self, split: str):
         if split == "train":
             return self.train_entities_per_doc, self.train_docs
@@ -281,7 +286,9 @@ class InputDataset:
                     contaminated_entities.append(doc["entities"][pos])
                 else:
                     clean_entities.append(doc["entities"][pos])
-            assert len(clean_entities) + len(contaminated_entities) == len(doc["entities"])
+            assert len(clean_entities) + len(contaminated_entities) == len(
+                doc["entities"]
+            )
             clean_doc = dict(doc, entities=clean_entities)
             contaminated_doc = dict(doc, entities=contaminated_entities)
             docs_with_clean_entities.append(clean_doc)
@@ -375,7 +382,9 @@ def outer(t_in: T_IN, t_out: T_OUT, enabled=True):
 T_DS = TypeVar("T_DS", bound=InputDataset)
 
 
-def parse_dataset_subclass(subclass: type[T_DS], sep=":", as_list=True, position_aware=True):
+def parse_dataset_subclass(
+    subclass: type[T_DS], sep=":", as_list=True, position_aware=False
+):
     @outer(str, subclass, as_list)
     def _parse_dataset(inp: str) -> subclass:
         if sep in inp:
@@ -387,8 +396,16 @@ def parse_dataset_subclass(subclass: type[T_DS], sep=":", as_list=True, position
         if len(args) < 3:
             raise ValueError(args)
         if len(args) > 3:
-            return subclass(Path(args[0]), Path(args[1]), args[3], Path(args[2]), position_aware=position_aware)
-        return subclass(Path(args[0]), Path(args[1]), args[2], position_aware=position_aware)
+            return subclass(
+                Path(args[0]),
+                Path(args[1]),
+                args[3],
+                Path(args[2]),
+                position_aware=position_aware,
+            )
+        return subclass(
+            Path(args[0]), Path(args[1]), args[2], position_aware=position_aware
+        )
 
     return _parse_dataset
 

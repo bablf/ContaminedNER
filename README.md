@@ -21,10 +21,12 @@ This repository is structured as follows:
 
 ```shell
 git clone xyz && cd xyz
-python3 -m venv venv     # python3.12 works   
+python3 -m venv venv     # python3.12 works
 source venv/bin/activate
 pip install .
 bash ./scripts/datasets/load_datasets.sh    # loads all datasets except ace05
+make -f configs.Makefile all                # create config files
+make -f plots.Makefile contamination_splits # create different contamination splits
 ```
 ### Dataset Contamination Visualizations
 
@@ -50,10 +52,11 @@ and open any file in [scripts/analysis/visuals](scripts/analysis/visuals) in you
 ### Recreating Experiments
 
 For our experiments, we used ITER[^iter], ASP[^asp] and DiffusionNER[^diff].
-To recreate our experiments, configs have to be generated first:
+To recreate our experiments, configs and contamination splits have to be generated first:
 
 ```shell
 make -f configs.Makefile all
+make -f plots.Makefile contamination_splits
 ```
 
 Then, we can simply run all our experiments via:

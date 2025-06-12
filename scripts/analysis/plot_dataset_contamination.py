@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any, Optional, TypeVar
+from typing import Any, Optional, TypeVar, Union
 
 import matplotlib as mpl
 import matplotlib.patches as mpatches
@@ -23,7 +23,16 @@ mpl.rcParams["text.latex.preamble"] = (
 )
 
 
-def index_to_color(info: tuple[Any, int, int], offset: int):
+def index_to_color(
+    info: Union[tuple[Any, int, int], tuple[str, str, str]], offset: int
+):
+    if (
+        isinstance(info, tuple)
+        and isinstance(info[0], str)
+        and isinstance(info[1], str)
+        and isinstance(info[2], str)
+    ):
+        return info[offset]
     cmap, colors_per_category, start_pos = info
     pos = start_pos + colors_per_category - (offset + 1)
     return cmap.colors[pos]
@@ -182,7 +191,10 @@ def parse_color_range(inp: str) -> tuple[Any, int, int]:
     args = inp.split(":", 2)
     if len(args) < 3:
         raise ValueError()
-    return mpl.colormaps[args[0]], int(args[1]), int(args[2])
+    if args[0] in mpl.colormaps:
+        return mpl.colormaps[args[0]], int(args[1]), int(args[2])
+    else:
+        return tuple(args)
 
 
 @with_argparse(
