@@ -54,6 +54,7 @@ def plot_contamination_level(
     dataset,
     ours,
 ):
+    fontsize = 8  # 7
     train_bar = axis.barh(
         col_x,
         1.0 * scale,
@@ -126,7 +127,7 @@ def plot_contamination_level(
             label_type="edge",
             labels=[dataset.train_size],
             padding=2,
-            fontsize=7,
+            fontsize=fontsize,
         )
         if ours:
             axis.bar_label(
@@ -134,14 +135,14 @@ def plot_contamination_level(
                 label_type="center",
                 labels=["ours"],
                 padding=2,
-                fontsize=7,
+                fontsize=fontsize,
             )
         if 0 < train_contamination < 0.9:
             axis.bar_label(
                 train_bar_cont,
                 label_type="edge",
                 labels=[int(train_contamination * dataset.train_size)],
-                fontsize=7,
+                fontsize=fontsize,
                 padding=2,
             )
         if 0 < train_doc_contamination < 0.9:
@@ -149,7 +150,7 @@ def plot_contamination_level(
                 train_bar_whole_cont,
                 label_type="edge",
                 labels=[int(train_doc_contamination * dataset.train_size)],
-                fontsize=7,
+                fontsize=fontsize,
                 padding=2,
             )
         axis.bar_label(
@@ -157,7 +158,7 @@ def plot_contamination_level(
             label_type="edge",
             labels=[dataset.test_size],
             padding=2,
-            fontsize=7,
+            fontsize=fontsize,
         )
         if ours:
             axis.bar_label(
@@ -165,7 +166,7 @@ def plot_contamination_level(
                 label_type="center",
                 labels=["ours"],
                 padding=2,
-                fontsize=7,
+                fontsize=fontsize,
             )
 
         if 0 < test_contamination < 0.9:
@@ -173,7 +174,7 @@ def plot_contamination_level(
                 test_bar_cont,
                 label_type="edge",
                 labels=[int(test_contamination * dataset.test_size)],
-                fontsize=7,
+                fontsize=fontsize,
                 padding=2,
             )
         if 0 < test_doc_contamination < 0.9:
@@ -181,7 +182,7 @@ def plot_contamination_level(
                 test_bar_whole_cont,
                 label_type="edge",
                 labels=[int(test_doc_contamination * dataset.test_size)],
-                fontsize=7,
+                fontsize=fontsize,
                 padding=2,
             )
 
@@ -303,7 +304,7 @@ def plot_dataset_contamination(
         #        ylim=(-1.1, 1.1), yticks=np.arange(-1.0, 1.25, 0.25), # ylabel=[f"{abs(elem * 100):.0f}" for elem in np.arange(-1.0, 1.25, 0.25)]
         # ylim=(-1.25, 1.75),
     )
-
+    legend_fontsize = 13  # 12
     leg1 = axis.legend(
         handles=[
             mpatches.Patch(
@@ -311,6 +312,7 @@ def plot_dataset_contamination(
                 alpha=1.0,
                 label="Partial sample contamination",
                 edgecolor="white",
+                fontsize=legend_fontsize,
                 hatch="\\\\",
             ),
             mpatches.Patch(
@@ -318,6 +320,7 @@ def plot_dataset_contamination(
                 alpha=1.0,
                 label="Full sample contamination",
                 edgecolor="white",
+                fontsize=legend_fontsize,
                 hatch="\\\\\\",
             ),
         ],
@@ -331,6 +334,7 @@ def plot_dataset_contamination(
             mpatches.Patch(
                 facecolor=index_to_color(legend_cmap, offset=0),
                 alpha=1.0,
+                fontsize=legend_fontsize,
                 label="Clean samples",
                 edgecolor="white",
             ),
